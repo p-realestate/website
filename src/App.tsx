@@ -150,9 +150,9 @@ export default function App() {
             <div>
               <h4 className="mb-4">Contact</h4>
               <div className="space-y-2 text-purple-200">
-                <p>(555) 123-4567</p>
-                <p>info@purplestone.com</p>
-                <p>Los Angeles, CA</p>
+                <p>1300 312 524</p>
+                <p>admin@purplestonerealestate.com.au</p>
+                <p>Officer, VIC</p>
               </div>
             </div>
           </div>

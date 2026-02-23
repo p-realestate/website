@@ -55,8 +55,8 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "predeploy": "npm run build",
+        "build": "vite build --base=./",
+        "predeploy": "yarn build",
         "deploy": "gh-pages -d build"
     }
 }
