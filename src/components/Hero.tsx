@@ -36,7 +36,7 @@ export function Hero() {
               <span>Officer, Melbourne</span>
             </div>
           </div>
-          <a href="#contact" className="bg-white text-purple-900 px-8 py-3 rounded-lg hover:bg-purple-50 transition-colors">Get a Free Property Analysis</a>
+          <a href="#contact" className="bg-white text-purple-900 px-8 py-3 rounded-lg hover:bg-purple-50 transition-colors">Get a Free Rental Appraisal</a>
           {/* <button className="bg-white text-purple-900 px-8 py-3 rounded-lg hover:bg-purple-50 transition-colors">
             Contact Me Today
           </button> */}
