@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { OFFICER_ADDRESS, OFFICE_EMAIL, OFFICE_PHONE } from "../constants/constants";
 
 export function Hero() {
   return (
@@ -25,15 +26,15 @@ export function Hero() {
           <div className="flex flex-wrap gap-6 mb-8">
             <div className="flex items-center gap-2">
               <Phone size={20} />
-              <span>1300 312 524</span>
+              <span>{OFFICE_PHONE}</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={20} />
-              <span>admin@purplestonerealestate.com.au</span>
+              <span>{OFFICE_EMAIL}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={20} />
-              <span>Officer, Melbourne</span>
+              <span>{OFFICER_ADDRESS}</span>
             </div>
           </div>
           <a href="#contact" className="bg-white text-purple-900 px-8 py-3 rounded-lg hover:bg-purple-50 transition-colors">Get a Free Rental Appraisal</a>

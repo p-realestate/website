@@ -5,8 +5,15 @@ import { Services } from "./components/Services";
 import { Contact } from "./components/Contact";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import logo from "figma:asset/54e011d33ca06c9ef20f7dda3a672d1a9592e972.png";
+import { useState } from "react";
+import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { OFFICER_ADDRESS, OFFICE_EMAIL, OFFICE_PHONE } from "./constants/constants";
 
 export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const propertiesPerPage = 6;
+
   const featuredProperties = [
     {
       image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/6/images/v6k34rvcfai6xctpyg7m24bh4a_2638-67c3c550f373d.w.300.h.210.q.75.zc.C.jpg",
@@ -63,8 +70,71 @@ export default function App() {
       baths: 1,
       sqft: "506 sqm",
       status: "Leased" as const
+    },
+    {
+      image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/15/images/ftnxishvcyi67alrbopyjfww54_11_07_30_pm_8647-68540d9c6bc2a.w.1400.h.980.zc.C.aoe.1.q.70.f.webp.jpg",
+      title: "Unit for Rent",
+      price: "$450 per week",
+      location: "1/40 Gladstone St, Warragul",
+      beds: 2,
+      baths: 1,
+      sqft: "139 sqm",
+      status: "Leased" as const
+    },
+    {
+      image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/20/images/image8__1__9211-6873088b022d0.w.1920.h.1080.zc.C.aoe.1.q.70.f.webp.jpg",
+      title: "Family Home",
+      price: "$450 per week",
+      location: "57 Patriot Cres, Smythes Creek",
+      beds: 4,
+      baths: 2,
+      sqft: "511 sqm",
+      status: "Leased" as const
+    },
+    {
+      image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/22/images/qdeobporqyi6ncszemtbxaegse_9847-68bd5b49f38ba.w.1400.h.980.zc.C.aoe.1.q.70.f.webp.jpg",
+      title: "Family Home",
+      price: "$475 per week",
+      location: "1 Beckham Ct, Warragul",
+      beds: 2,
+      baths: 1,
+      sqft: "395 sqm",
+      status: "Leased" as const
+    },
+    {
+      image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/28/images/image_7354-6948c8a38591d.w.1400.h.980.zc.C.aoe.1.q.70.f.webp.jpg",
+      title: "Home for Rent",
+      price: "$475 per week",
+      location: "30 Sydney Way, Alfredton",
+      beds: 4,
+      baths: 2,
+      sqft: "215 sqm",
+      status: "Leased" as const
+    },
+    {
+      image: "https://thm.arosoftware.com/aro-au-prod-storage.s3-ap-southeast-2.amazonaws.com/purplestone/listings/16/images/mofvqrinwui6xmkt5ok272kpgy_0075-685d88caa1d01.w.1400.h.980.zc.C.aoe.1.q.70.f.webp.jpg",
+      title: "Home for Rent",
+      price: "$480 per week",
+      location: "43 Latrobe St, Warragul",
+      beds: 3,
+      baths: 1,
+      sqft: "740 sqm",
+      status: "Leased" as const
     }
   ];
+
+  const indexOfLastProperty = currentPage * propertiesPerPage;
+  const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
+  const currentProperties = featuredProperties.slice(
+    indexOfFirstProperty,
+    indexOfLastProperty,
+  );
+
+  const totalPages = Math.ceil(featuredProperties.length / propertiesPerPage);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -84,10 +154,52 @@ export default function App() {
               <a href="#services" className="text-gray-700 hover:text-purple-600 transition-colors">Services</a>
               <a href="#contact" className="text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
             </div>
-            <button className="md:hidden text-gray-700">
-              Menu
+            <button className="md:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
+           {/* Mobile Menu */}
+           {mobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-4">
+                <a 
+                  href="#home" 
+                  className="text-gray-700 hover:text-purple-600 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
+                <a 
+                  href="#properties" 
+                  className="text-gray-700 hover:text-purple-600 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Properties
+                </a>
+                <a 
+                  href="#about" 
+                  className="text-gray-700 hover:text-purple-600 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About
+                </a>
+                <a 
+                  href="#services" 
+                  className="text-gray-700 hover:text-purple-600 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Services
+                </a>
+                <a 
+                  href="#contact" 
+                  className="text-gray-700 hover:text-purple-600 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -106,9 +218,45 @@ export default function App() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProperties.map((property, index) => (
+            {currentProperties.map((property, index) => (
               <PropertyCard key={index} {...property} />
             ))}
+          </div>
+                    {/* Pagination Controls */}
+                    <div className="flex justify-center items-center gap-2 mt-12">
+            <button
+              className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft size={20} />
+              Previous
+            </button>
+            
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    currentPage === page
+                      ? "bg-purple-600 text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            <button
+              className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
       </section>
@@ -150,9 +298,9 @@ export default function App() {
             <div>
               <h4 className="mb-4">Contact</h4>
               <div className="space-y-2 text-purple-200">
-                <p>1300 312 524</p>
-                <p>admin@purplestonerealestate.com.au</p>
-                <p>Officer, VIC</p>
+                <p>{OFFICE_PHONE}</p>
+                <p>{OFFICE_EMAIL}</p>
+                <p>{OFFICER_ADDRESS}</p>
               </div>
             </div>
           </div>

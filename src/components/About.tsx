@@ -4,8 +4,8 @@ import profile from "figma:asset/danny.jpg";
 
 export function About() {
   const stats = [
-    { icon: Key, value: "20+", label: "Properties Rented" },
-    { icon: Users, value: "50+", label: "Happy Clients" },
+    { icon: Key, value: "100+", label: "Properties Rented" },
+    { icon: Users, value: "150+", label: "Happy Clients" },
     { icon: Award, value: "4+", label: "Years Experience" },
     { icon: TrendingUp, value: "98%", label: "Occupancy Rate" },
   ];
