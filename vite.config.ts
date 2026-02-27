@@ -19,6 +19,7 @@
         'input-otp@1.4.2': 'input-otp',
         'figma:asset/54e011d33ca06c9ef20f7dda3a672d1a9592e972.png': path.resolve(__dirname, './src/assets/54e011d33ca06c9ef20f7dda3a672d1a9592e972.png'),
         'figma:asset/danny.jpg': path.resolve(__dirname, './src/assets/danny.jpg'),
+        'figma:asset/HRWBLogo.jpeg': path.resolve(__dirname, './src/assets/HRWBLogo.jpeg'),
         'embla-carousel-react@8.6.0': 'embla-carousel-react',
         'cmdk@1.1.1': 'cmdk',
         'class-variance-authority@0.7.1': 'class-variance-authority',
